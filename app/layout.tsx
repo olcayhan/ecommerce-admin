@@ -1,22 +1,21 @@
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import Sidebar from "@/components/Sidebar";
+import { fonts } from "./fonts";
+import { Providers } from "./providers";
 import "./globals.css";
-
-const inter = Inter({ subsets: ["latin"] });
-
-export const metadata: Metadata = {
-  title: "E Commerce Admin Panel",
-  description: "E Commerce Admin Panel",
-};
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
+    <html lang="en" className={fonts.rubik.variable}>
+      <body>
+        <Providers>
+          <Sidebar />
+          {children}
+        </Providers>
+      </body>
     </html>
   );
 }
